@@ -5,20 +5,21 @@ Entasis provides a few very useful instance methods for Struct based classes. Ha
 
 Example:
 
-  class Person < Struct.new(:name, :age, :city)
-    include Entasis::Base
+    class Person < Struct.new(:name, :age, :city)
+      include Entasis::Base
 
-    def age=(years)
-      self['age'] = years.to_i
+      def age=(years)
+        self['age'] = years.to_i
+      end
     end
-  end
 
-  hilda = Person.new(:name => 'Hilda', :age => '23', :city => 'Berlin')
-  hilda.attribute_names # => ["name", "age", "city"]
-  hilda.attributes      # => {"name"=>"Hilda", "age"=>23, "city"=>"Berlin"}
+    hilda = Person.new(:name => 'Hilda', :age => '23', :city => 'Berlin')
+    hilda.attribute_names # => ["name", "age", "city"]
+    hilda.attributes      # => {"name"=>"Hilda", "age"=>23, "city"=>"Berlin"}
 
 
-== Note on Patches/Pull Requests
+Note on Patches/Pull Requests
+-----------------------------
 
 * Fork the project.
 * Make your feature addition or bug fix.
@@ -26,10 +27,15 @@ Example:
 * Commit, do not mess with rakefile, version, or history.
 * Send me a pull request.
 
-== Author
-Ingemar Edsborn, ingemar@elabs.se
 
-== Copyright
+Author
+------
 
-Copyright (c) 2010 Elabs AB. See LICENSE for details. http://www.elabs.se
+Ingemar Edsborn (ingemar@elabs.se)
+
+
+Copyright
+---------
+
+Copyright (c) 2010 Elabs AB (http://www.elabs.se). See LICENSE for details 
 
