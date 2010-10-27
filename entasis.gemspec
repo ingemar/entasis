@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Ingemar Edsborn"]
   s.email       = ["ingemar@elabs.se"]
   s.homepage    = "http://github.com/ingemar/entasis"
-  s.summary     = %q{A few neat instance methods for Struct based classes}
+  s.summary     = %q{A few neat methods for a basic class}
   s.description = %q{Entasis provides a few very useful instance methods for Struct based classes. Handy for models without a database.}
 
   s.files         = Dir.glob("lib/**/*") + %w(Gemfile entasis.gemspec HISTORY README.md LICENSE)

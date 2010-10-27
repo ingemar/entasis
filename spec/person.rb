@@ -1,7 +1,7 @@
-class Person < Struct.new(:name, :age, :city)
-  include Entasis::Base
+class Person < Entasis::Base
+  attributes :name, :age, :city
 
   def age=(years)
-    self['age'] = years.to_i
+    @age = years.to_i
   end
 end

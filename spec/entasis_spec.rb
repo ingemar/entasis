@@ -16,10 +16,6 @@ describe "Entasis::Base" do
     it 'returns a list of attribute names' do
       hilda.attribute_names.should == %w[name age city]
     end
-
-    it 'is an alias for #members' do
-      Person.instance_method(:attribute_names).should == Person.instance_method(:members)
-    end
   end
 
   describe "#attributes" do
