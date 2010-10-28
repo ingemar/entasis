@@ -16,6 +16,9 @@ Example:
     hilda = Person.new(:name => 'Hilda', :age => '23', :city => 'Berlin')
     hilda.attribute_names # => ["name", "age", "city"]
     hilda.attributes      # => {"name"=>"Hilda", "age"=>23, "city"=>"Berlin"}
+    anon = Person.new
+    anon.valid?           # => false
+    anon.errors           # => #<OrderedHash {:name=>["can't be blank"]}>
 
 
 Note on Patches/Pull Requests

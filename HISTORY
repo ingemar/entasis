@@ -1,2 +1,9 @@
+== 0.2.1
+Introduced ActiveModel validations
+
+== 0.2.0
+Moved away from Struct and started to use attr_accessor as boiler plate.
+Added Base.attributes method to define attributes
+
 == 0.1.0
 Initial release
