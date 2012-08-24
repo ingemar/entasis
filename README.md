@@ -18,7 +18,7 @@ Example:
     hilda.attributes      # => {"name"=>"Hilda", "age"=>23, "city"=>"Berlin"}
     anon = Person.new
     anon.valid?           # => false
-    anon.errors           # => #<OrderedHash {:name=>["can't be blank"]}>
+    anon.errors           # => {:name=>["can't be blank"]}>
 
 
 Note on Patches/Pull Requests
@@ -34,11 +34,10 @@ Note on Patches/Pull Requests
 Author
 ------
 
-Ingemar Edsborn (ingemar@elabs.se)
+Ingemar Edsborn (ingemar@xox.se)
 
 
 Copyright
 ---------
 
-Copyright (c) 2010 Elabs AB (http://www.elabs.se). See LICENSE for details 
-
+Copyright (c) 2010 Ingemar Edsborn. See LICENSE for details

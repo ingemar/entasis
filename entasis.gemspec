@@ -7,7 +7,8 @@ Gem::Specification.new do |s|
   s.version      = Entasis::VERSION
   s.platform     = Gem::Platform::RUBY
   s.authors      = ["Ingemar Edsborn"]
-  s.email        = ["ingemar@elabs.se"]
+  s.email        = ["ingemar@xox.se"]
+
   s.homepage     = "http://github.com/ingemar/entasis"
   s.summary      = %q{A few neat methods for a basic class}
   s.description  = %q{Entasis provides a few useful methods for building a basic class. Handy for models without a database.}
