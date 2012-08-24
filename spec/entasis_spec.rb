@@ -33,7 +33,7 @@ describe "Entasis::Base" do
       it "will have errors" do
         anon = Person.new(:name => "")
         anon.should_not be_valid
-        anon.errors.should == { :name => ["can't be blank"] }
+        anon.errors.to_hash.should == { :name => ["can't be blank"] }
       end
     end
   end

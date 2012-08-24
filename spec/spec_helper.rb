@@ -1,7 +1,7 @@
-$LOAD_PATH.unshift(File.dirname(__FILE__))
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-require 'entasis'
-require 'rspec'
+require "rubygems"
+require "bundler/setup"
 
-Rspec.configure do |config|
+require 'entasis'
+
+RSpec.configure do |config|
 end
