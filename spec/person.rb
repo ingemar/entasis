@@ -1,4 +1,6 @@
-class Person < Entasis::Base
+class Person
+  include Entasis::Model
+
   attributes :name, :age, :city
 
   validates_presence_of :name

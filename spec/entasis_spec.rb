@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 require File.expand_path(File.dirname(__FILE__) + '/person')
 
-describe "Entasis::Base" do
+describe "Entasis::Model" do
   let(:hilda) { hilda = Person.new(:name => 'Hilda', :age => '23', :city => 'Berlin') }
 
   describe "#new" do
@@ -9,6 +9,12 @@ describe "Entasis::Base" do
       hilda.name.should == 'Hilda'
       hilda.age.should  == 23
       hilda.city.should == 'Berlin'
+    end
+
+    it "raises an error if attribute is unknown" do
+      expect {
+        Person.new(undefined: 'value')
+      }.to raise_error Person::UnknownAttributeError, 'unkown attribute "undefined"'
     end
   end
 

@@ -4,6 +4,8 @@ module Entasis
 
     included do
       include ActiveModel::Validations
+
+      self.class_eval 'class UnknownAttributeError < StandardError; end'
     end
 
     module ClassMethods
@@ -34,7 +36,13 @@ module Entasis
     private
     # Takes each key and value from the hash and assigns it to it's attribute.
     def set_attributes_from_hash(hash)
-      hash.each_pair { |key, value| self.send("#{key}=", value) }
+      hash.each do |name, value|
+        if attribute_names.include?(name.to_s) || self.respond_to?(name)
+          self.send("#{name}=", value)
+        else
+          raise self.class::UnknownAttributeError, "unkown attribute \"#{name}\""
+        end
+      end
     end
   end
 end
