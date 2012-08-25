@@ -16,7 +16,7 @@ class Person
   end
 end
 
-hilda = Person.new(:name => 'Hilda', :age => '23', :city => 'Berlin')
+hilda = Person.new(name: 'Hilda', age: '23', city: 'Berlin')
 hilda.attribute_names # => ["name", "age", "city"]
 hilda.attributes      # => {"name"=>"Hilda", "age"=>23, "city"=>"Berlin"}
 
