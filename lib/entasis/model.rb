@@ -28,7 +28,7 @@ module Entasis
 
     def attributes=(hash)
       hash.each do |name, value|
-        if attribute_names.include?(name.to_s) || self.respond_to?(name)
+        if attribute_names.include?(name.to_s) || self.respond_to?("#{name}=")
           self.send("#{name}=", value)
         else
           raise self.class::UnknownAttributeError, "unkown attribute \"#{name}\""
