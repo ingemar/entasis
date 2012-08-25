@@ -18,24 +18,15 @@ module Entasis
     end
 
     # Takes a hash and assigns keys and values to it's attributes members
-    def initialize(*args)
-      if args.first.is_a?(Hash) then set_attributes_from_hash(args.first) else super(*args) end
+    def initialize(hash)
+      self.attributes = hash
     end
 
     def attribute_names
       self.class.class_variable_get :@@attribute_names
     end
 
-    # Returns an attributes hash
-    def attributes
-      attrs = {}
-      attribute_names.each { |name| attrs[name] = send(name) }
-      attrs
-    end
-
-    private
-    # Takes each key and value from the hash and assigns it to it's attribute.
-    def set_attributes_from_hash(hash)
+    def attributes=(hash)
       hash.each do |name, value|
         if attribute_names.include?(name.to_s) || self.respond_to?(name)
           self.send("#{name}=", value)
@@ -43,6 +34,13 @@ module Entasis
           raise self.class::UnknownAttributeError, "unkown attribute \"#{name}\""
         end
       end
+    end
+
+    # Returns an attributes hash
+    def attributes
+      attrs = {}
+      attribute_names.each { |name| attrs[name] = send(name) }
+      attrs
     end
   end
 end
