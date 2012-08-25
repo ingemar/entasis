@@ -1,3 +1,3 @@
 module Entasis
-  VERSION = "0.3.0.pre1"
+  VERSION = "0.3.0.rc1.1"
 end
