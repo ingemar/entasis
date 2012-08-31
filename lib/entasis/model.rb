@@ -31,7 +31,7 @@ module Entasis
         if attribute_names.include?(name.to_s) || self.respond_to?("#{name}=")
           self.send("#{name}=", value)
         else
-          raise self.class::UnknownAttributeError, "unkown attribute \"#{name}\""
+          raise self.class::UnknownAttributeError, "unkown attribute: #{name}"
         end
       end
     end
