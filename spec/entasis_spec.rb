@@ -1,5 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
-require File.expand_path(File.dirname(__FILE__) + '/person')
+require 'spec_helper'
 
 describe "Entasis::Model" do
   let(:hilda) { hilda = Person.new(:name => 'Hilda', :age => '23', :city => 'Berlin') }
