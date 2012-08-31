@@ -38,9 +38,7 @@ module Entasis
 
     # Returns an attributes hash
     def attributes
-      attrs = {}
-      attribute_names.each { |name| attrs[name] = send(name) }
-      attrs
+      attribute_names.inject({}) { |h, name| h[name] = send(name); h }
     end
   end
 end
