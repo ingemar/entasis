@@ -9,7 +9,10 @@ module Entasis
     end
 
     module ClassMethods
-      # Takes a list of symbolized attribute names and defines them
+      ##
+      #
+      # Takes a list of attribute names
+      #
       def attributes(*attrs)
         class_variable_set :@@attribute_names, attrs.map(&:to_s)
 
@@ -17,15 +20,28 @@ module Entasis
       end
     end
 
+    ##
+    #
     # Takes a hash and assigns keys and values to it's attributes members
+    #
     def initialize(hash)
       self.attributes = hash
     end
 
+    ##
+    #
+    # Returns a list of attribute names
+    #
     def attribute_names
       self.class.class_variable_get :@@attribute_names
     end
 
+    ##
+    #
+    # Takes a hash of attribute names and values and set each attribute.
+    #
+    # If passwed an unkown attribute it ill raise +class::UnknownAttributeError+
+    #
     def attributes=(hash)
       hash.each do |name, value|
         if attribute_names.include?(name.to_s) || self.respond_to?("#{name}=")
@@ -36,7 +52,10 @@ module Entasis
       end
     end
 
-    # Returns an attributes hash
+    ##
+    #
+    # Returns all attributes serialied as hash
+    #
     def attributes
       attribute_names.inject({}) { |h, name| h[name] = send(name); h }
     end
