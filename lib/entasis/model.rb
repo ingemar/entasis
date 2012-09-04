@@ -4,7 +4,8 @@ module Entasis
 
     included do
       include ActiveModel::Validations
-
+      class_attribute :attribute_names
+      self.attribute_names ||= []
       self.class_eval 'class UnknownAttributeError < StandardError; end'
     end
 
@@ -14,7 +15,7 @@ module Entasis
       # Takes a list of attribute names
       #
       def attributes(*attrs)
-        class_variable_set :@@attribute_names, attrs.map(&:to_s)
+        self.attribute_names += attrs.map(&:to_s)
 
         attr_accessor *attrs
       end

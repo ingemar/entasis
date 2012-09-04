@@ -9,3 +9,7 @@ class Person
     @age = years.to_i
   end
 end
+
+class Child < Person
+  attributes :candy
+end
