@@ -29,6 +29,15 @@ describe "Entasis::Model" do
     end
   end
 
+  describe "subclasses" do
+    let(:hans) { Child.new(:name => 'Hans', :age => "8", :candy => true) }
+
+    it "inherits attributes from the parent" do
+      hans.attributes.should == { "name" => "Hans", "age" => 8,  "city" => nil, "candy" => true }
+
+    end
+  end
+
   context "validations" do
     describe "#valid?" do
       it "validates" do
