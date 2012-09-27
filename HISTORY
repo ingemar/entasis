@@ -1,3 +1,6 @@
+== 0.3.1
+Allow attributes to be inherited (Joshua Davey and Johnny Winn)
+
 == 0.3.0
 Refactored to dependency injection
 Only set known attributes
