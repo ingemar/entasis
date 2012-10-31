@@ -25,7 +25,7 @@ module Entasis
     #
     # Takes a hash and assigns keys and values to it's attributes members
     #
-    def initialize(hash)
+    def initialize(hash={})
       self.attributes = hash
     end
 

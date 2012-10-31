@@ -15,6 +15,10 @@ describe "Entasis::Model" do
         Person.new(undefined: 'value')
       }.to raise_error Person::UnknownAttributeError, 'unkown attribute: undefined'
     end
+
+    it "does not require attribute hash" do
+      expect { Person.new }.to_not raise_error
+    end
   end
 
   describe "#attribute_names" do
