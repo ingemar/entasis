@@ -1,3 +1,6 @@
+== 0.3.2
+Do not require attribute hash at initialization (Jack Christensen and Joshua Davey)
+
 == 0.3.1
 Allow attributes to be inherited (Joshua Davey and Johnny Winn)
 
