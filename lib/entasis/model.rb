@@ -41,7 +41,7 @@ module Entasis
     #
     # Takes a hash of attribute names and values and set each attribute.
     #
-    # If passwed an unkown attribute it ill raise +class::UnknownAttributeError+
+    # If passwed an unkown attribute it will raise +class::UnknownAttributeError+
     #
     def attributes=(hash)
       hash.each do |name, value|
@@ -55,7 +55,7 @@ module Entasis
 
     ##
     #
-    # Returns all attributes serialied as hash
+    # Returns all attributes serialized as hash
     #
     def attributes
       attribute_names.inject({}) { |h, name| h[name] = send(name); h }
