@@ -1,57 +1,73 @@
 require 'spec_helper'
 
-describe "Entasis::Model" do
-  let(:hilda) { hilda = Person.new(:name => 'Hilda', :age => '23', :city => 'Berlin') }
+describe Entasis::Model do
+  let(:attributes) do
+    { name: 'Hilda', age: '23', city: 'Berlin' }
+  end
+  let(:person) { Person.new(attributes) }
 
-  describe "#new" do
-    it "sets the attributes from the given hash" do
-      hilda.name.should == 'Hilda'
-      hilda.age.should  == 23
-      hilda.city.should == 'Berlin'
+  describe '#new' do
+    it 'calls #attributes= with the given hash' do
+      Person.any_instance.should_receive(:attributes=).once.with(attributes)
+      person
     end
 
-    it "raises an error if attribute is unknown" do
-      expect {
-        Person.new(undefined: 'value')
-      }.to raise_error Person::UnknownAttributeError, 'unkown attribute: undefined'
-    end
-
-    it "does not require attribute hash" do
+    it 'does not require attribute hash' do
       expect { Person.new }.to_not raise_error
     end
   end
 
-  describe "#attribute_names" do
+  describe '#attribute_names' do
     it 'returns a list of attribute names' do
-      hilda.attribute_names.should == %w[name age city]
+      expect(person.attribute_names).to eq(%w[name age city])
     end
   end
 
-  describe "#attributes" do
+  describe '#attributes=' do
+    context 'when given a hash' do
+      it 'sets the attributes from the given hash' do
+        person.attributes = attributes
+
+        expect(person.name).to eq('Hilda')
+        expect(person.age).to eq(23)
+        expect(person.city).to eq('Berlin')
+      end
+    end
+
+    it 'raises an error if attribute is unknown' do
+      expect {
+        Person.new(undefined: 'value')
+      }.to raise_error Person::UnknownAttributeError, 'unkown attribute: undefined'
+    end
+  end
+
+  describe '#attributes' do
     it 'returns a hash of attributes names and values' do
-      hilda.attributes.should == {"name"=>"Hilda", "age"=>23, "city"=>"Berlin"}
+      expect(person.attributes).to eq({ 'name' => 'Hilda', 'age' => 23, 'city' => 'Berlin' })
+    end
+
+    context 'subclasses' do
+      let(:child) { Child.new(name: 'Hans', age: '8', candy: true) }
+
+      it 'inherits attributes from the parent' do
+        expect(child.attributes).to eq({ 'name' => 'Hans', 'age' => 8,  'city' => nil, 'candy' => true })
+      end
     end
   end
 
-  describe "subclasses" do
-    let(:hans) { Child.new(:name => 'Hans', :age => "8", :candy => true) }
-
-    it "inherits attributes from the parent" do
-      hans.attributes.should == { "name" => "Hans", "age" => 8,  "city" => nil, "candy" => true }
-
-    end
-  end
-
-  context "validations" do
-    describe "#valid?" do
-      it "validates" do
-        hilda.should be_valid
+  context 'validations' do
+    describe '#valid?' do
+      context 'when valid' do
+        it { expect(person).to be_valid }
       end
 
-      it "will have errors" do
-        anon = Person.new(:name => "")
-        anon.should_not be_valid
-        anon.errors.to_hash.should == { :name => ["can't be blank"] }
+      context 'invalid' do
+        subject { Person.new(name: '') }
+
+        it 'will have errors' do
+          expect(subject).to_not be_valid
+          expect(subject.errors.to_hash).to eq({ name: ["can't be blank"] })
+        end
       end
     end
   end
