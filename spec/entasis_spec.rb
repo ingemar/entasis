@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Entasis::Model do
   let(:attributes) do
-    { name: 'Hilda', age: '23', city: 'Berlin' }
+    { name: 'Hilda', age: '23', city: 'Stockholm' }
   end
   let(:person) { Person.new(attributes) }
 
@@ -30,7 +30,7 @@ describe Entasis::Model do
 
         expect(person.name).to eq('Hilda')
         expect(person.age).to eq(23)
-        expect(person.city).to eq('Berlin')
+        expect(person.city).to eq('Stockholm')
       end
     end
 
@@ -51,7 +51,7 @@ describe Entasis::Model do
 
   describe '#attributes' do
     it 'returns a hash of attributes names and values' do
-      expect(person.attributes).to eq({ 'name' => 'Hilda', 'age' => 23, 'city' => 'Berlin' })
+      expect(person.attributes).to eq({ 'name' => 'Hilda', 'age' => 23, 'city' => 'Stockholm' })
     end
 
     context 'subclasses' do

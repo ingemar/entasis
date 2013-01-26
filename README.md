@@ -18,9 +18,9 @@ class Person
   end
 end
 
-hilda = Person.new(name: 'Hilda', age: '23', city: 'Berlin')
+hilda = Person.new(name: 'Hilda', age: '23', city: 'Stockholm')
 hilda.attribute_names # => ["name", "age", "city"]
-hilda.attributes      # => {"name"=>"Hilda", "age"=>23, "city"=>"Berlin"}
+hilda.attributes      # => {"name"=>"Hilda", "age"=>23, "city"=>"Stockholm"}
 
 anon = Person.new
 anon.valid?           # => false
