@@ -2,7 +2,10 @@ require "rubygems"
 require "bundler/setup"
 
 require 'entasis'
-require File.expand_path(File.dirname(__FILE__) + '/support/person')
+
+Dir.glob(File.dirname(__FILE__) + '/support/**/*.rb').each do |filename|
+  require filename
+end
 
 RSpec.configure do |config|
 end

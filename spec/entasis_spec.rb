@@ -39,6 +39,14 @@ describe Entasis::Model do
         Person.new(undefined: 'value')
       }.to raise_error Person::UnknownAttributeError, 'unkown attribute: undefined'
     end
+
+    context 'when .attributes option :allow_unknown is set to true' do
+      subject { Car.new(undefined: 'value') }
+
+      it 'ignores that attribute' do
+        expect(subject.attributes.keys).to_not include('undifined')
+      end
+    end
   end
 
   describe '#attributes' do

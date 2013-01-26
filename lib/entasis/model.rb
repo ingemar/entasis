@@ -4,7 +4,8 @@ module Entasis
 
     included do
       include ActiveModel::Validations
-      class_attribute :attribute_names
+      class_attribute :attribute_names, :entasis_config, instance_writer: false
+
       self.attribute_names ||= []
       self.class_eval 'class UnknownAttributeError < StandardError; end'
     end
@@ -15,6 +16,8 @@ module Entasis
       # Takes a list of attribute names
       #
       def attributes(*attrs)
+        self.entasis_config = if attrs.last.is_a?(Hash) then attrs.pop else {} end
+
         self.attribute_names += attrs.map(&:to_s)
 
         attr_accessor *attrs
@@ -48,7 +51,9 @@ module Entasis
         if attribute_names.include?(name.to_s) || self.respond_to?("#{name}=")
           self.send("#{name}=", value)
         else
-          raise self.class::UnknownAttributeError, "unkown attribute: #{name}"
+          if entasis_config[:allow_unknown] != true
+            raise self.class::UnknownAttributeError, "unkown attribute: #{name}"
+          end
         end
       end
     end
