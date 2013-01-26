@@ -18,7 +18,7 @@ module Entasis
       def attributes(*attrs)
         self.entasis_config = if attrs.last.is_a?(Hash) then attrs.pop else {} end
 
-        self.attribute_names += attrs.map(&:to_s)
+        self.attribute_names += attrs.map(&:to_s).sort
 
         attr_accessor *attrs
       end

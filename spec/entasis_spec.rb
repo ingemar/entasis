@@ -19,7 +19,7 @@ describe Entasis::Model do
 
   describe '#attribute_names' do
     it 'returns a list of attribute names' do
-      expect(person.attribute_names).to eq(%w[name age city])
+      expect(person.attribute_names).to eq(%w[name age city].sort)
     end
   end
 
