@@ -34,14 +34,6 @@ module Entasis
 
     ##
     #
-    # Returns a list of attribute names
-    #
-    def attribute_names
-      self.class.class_variable_get :@@attribute_names
-    end
-
-    ##
-    #
     # Takes a hash of attribute names and values and set each attribute.
     #
     # If passwed an unkown attribute it will raise +class::UnknownAttributeError+
