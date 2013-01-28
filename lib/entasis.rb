@@ -5,5 +5,6 @@ module Entasis
   extend ActiveSupport::Autoload
 
   autoload :Model
+  autoload :TransposeKeys
   autoload :Base
 end

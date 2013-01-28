@@ -13,3 +13,7 @@ end
 class Child < Person
   attributes :candy
 end
+
+class RelaxedPerson < Person
+  attributes :candy, allow_unknown: true
+end

@@ -41,7 +41,7 @@ describe Entasis::Model do
     end
 
     context 'when .attributes option :allow_unknown is set to true' do
-      subject { Car.new(undefined: 'value') }
+      subject { RelaxedPerson.new(undefined: 'value') }
 
       it 'ignores that attribute' do
         expect(subject.attributes.keys).to_not include('undifined')
