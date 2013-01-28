@@ -37,7 +37,7 @@ describe Entasis::Model do
     it 'raises an error if attribute is unknown' do
       expect {
         Person.new(undefined: 'value')
-      }.to raise_error Person::UnknownAttributeError, 'unkown attribute: undefined'
+      }.to raise_error Person::UnknownAttributeError, 'unknown attribute: undefined'
     end
 
     context 'when .attributes option :allow_unknown is set to true' do

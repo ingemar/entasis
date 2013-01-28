@@ -44,7 +44,7 @@ module Entasis
           self.send("#{name}=", value)
         else
           if entasis_config[:allow_unknown] != true
-            raise self.class::UnknownAttributeError, "unkown attribute: #{name}"
+            raise self.class::UnknownAttributeError, "unknown attribute: #{name}"
           end
         end
       end
