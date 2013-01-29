@@ -30,10 +30,21 @@ anon.errors           # => {:name=>["can't be blank"]}>
 Default behavior is to raise if any key in the hash given to `.new` or `#attributes=` is not defined,
 this can be circumvented by passing `ignore_undefined: true` as options when defining your attributes.
 
+
+Transposing keys
+----------------
+
+If you include the module `Entasis::TransposeKeys` after you have included `Entasis::Model`,
+keys in the given hash will be downcased and underscored before calling the setter methods.
+
+This can be very useful when you got hash with camelcased keys, for example from an external service serving XML soup.
+
+
 Contributors
 ------------
 
-Ingemar Edsborn (ingemar)
-Joshua Davey (jgdavey)
-Johnny Winn (nurugger07)
-Jack Christensen (jackc)
+  - Ingemar Edsborn (ingemar)
+  - Joshua Davey (jgdavey)
+  - Johnny Winn (nurugger07)
+  - Jack Christensen (jackc)
+
