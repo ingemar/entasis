@@ -15,5 +15,5 @@ class Child < Person
 end
 
 class RelaxedPerson < Person
-  attributes :candy, allow_unknown: true
+  attributes :candy, ignore_undefined: true
 end

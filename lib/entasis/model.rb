@@ -13,7 +13,9 @@ module Entasis
     module ClassMethods
       ##
       #
-      # Takes a list of attribute names
+      # Takes a list of attribute names. Last argument can be an options hash.
+      #
+      #   ignore_undefined: true - Silently ignore any undefined attributes
       #
       def attributes(*attrs)
         self.entasis_config = if attrs.last.is_a?(Hash) then attrs.pop else {} end
@@ -43,7 +45,7 @@ module Entasis
         if attribute_names.include?(name.to_s) || self.respond_to?("#{name}=")
           self.send("#{name}=", value)
         else
-          if entasis_config[:allow_unknown] != true
+          if entasis_config[:ignore_undefined] != true
             raise self.class::UnknownAttributeError, "unknown attribute: #{name}"
           end
         end
