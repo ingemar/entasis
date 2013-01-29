@@ -18,7 +18,7 @@ module Entasis
         if attribute_names.include?(transposed_name) || self.respond_to?("#{transposed_name}=")
           self.send("#{transposed_name}=", value)
         else
-          if entasis_config[:ignore_undefined] != true
+          if attributes_config[:ignore_undefined] != true
             raise self.class::UnknownAttributeError, "unknown attribute: #{transposed_name} (transposed from #{name})"
           end
         end
