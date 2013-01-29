@@ -27,9 +27,13 @@ anon.valid?           # => false
 anon.errors           # => {:name=>["can't be blank"]}>
 ```
 
+Default behavior is to raise if any key in the hash given to `.new` or `#attributes=` is not defined,
+this can be circumvented by passing `ignore_undefined: true` as options when defining your attributes.
 
 Contributors
 ------------
 
+Ingemar Edsborn (ingemar)
 Joshua Davey (jgdavey)
 Johnny Winn (nurugger07)
+Jack Christensen (jackc)
