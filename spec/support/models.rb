@@ -15,5 +15,12 @@ class Child < Person
 end
 
 class RelaxedPerson < Person
-  attributes :candy, ignore_undefined: true
+  attributes :baggypant, ignore_undefined: true
+end
+
+class Car
+  include Entasis::Model
+  include Entasis::TransposeKeys
+
+  attributes :name, :speed, :left_front_door, :right_front_door
 end
