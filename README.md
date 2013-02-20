@@ -2,6 +2,7 @@ entasis
 =======
 
 [![Build Status](https://secure.travis-ci.org/ingemar/entasis.png)](http://travis-ci.org/ingemar/entasis)
+[![Code Climate](https://codeclimate.com/github/ingemar/entasis.png)](https://codeclimate.com/github/ingemar/entasis)
 
 Entasis provides a few neat methods for building a basic class. Handy for models without a database.
 
@@ -11,6 +12,8 @@ Example:
 class Person
   include Entasis::Model
 
+  has_many :friends
+
   attributes :name, :age, :city
 
   def age=(years)
@@ -18,9 +21,22 @@ class Person
   end
 end
 
-hilda = Person.new(name: 'Hilda', age: '23', city: 'Stockholm')
-hilda.attribute_names # => ["name", "age", "city"]
-hilda.attributes      # => {"name"=>"Hilda", "age"=>23, "city"=>"Stockholm"}
+class Friend
+  include Entasis::Model
+
+  belongs_to :best_friend, class: 'Person'
+
+  attributes :name
+end
+
+
+hilda = Person.new(name: 'Hilda', age: '23', city: 'Stockholm', friends: [{ name: 'Emma' }, { name: 'Johan' }])
+
+hilda.attribute_names                  # => ["name", "age", "city"]
+hilda.attributes                       # => {"name"=>"Hilda", "age"=>23, "city"=>"Stockholm"}
+
+hilda.friends                          # => [#<Friend:0x0 @name="Emma">, #<Friend:0x1 @name="Johan">]
+hilda.friends[0].best_friend == hilda  # => true
 
 anon = Person.new
 anon.valid?           # => false
@@ -44,7 +60,8 @@ Contributors
 ------------
 
   - Ingemar Edsborn (ingemar)
-  - Joshua Davey (jgdavey)
-  - Johnny Winn (nurugger07)
+  - Gabriel Reis (greis)
   - Jack Christensen (jackc)
+  - Johnny Winn (nurugger07)
+  - Joshua Davey (jgdavey)
 
