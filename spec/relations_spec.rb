@@ -38,7 +38,12 @@ describe Entasis::Relations do
       it 'creates a new instance of the relation' do
         expect(destination).to be_a(Car::Destination)
         expect(destination.name).to eq('Stockholm')
-        expect(destination.car).to eq(car)
+      end
+    end
+
+    context 'when belongs_to was given a custom class name' do
+      it 'sets the correct relation' do
+        expect(destination.transportation).to eq(car)
       end
     end
   end

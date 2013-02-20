@@ -36,8 +36,8 @@ module Entasis
                   resource = #{relation_model}.new resource
                 end
 
-                if resource.belongs_to? self.class
-                  resource.send "\#{self.class.name.underscore}=", self
+                if inverse_relation = resource.belongings[self.class.to_s]
+                  resource.send "\#{inverse_relation}=", self
                 end
 
                 @#{relation} << resource
@@ -55,18 +55,21 @@ module Entasis
       # To complete the inverse relationship and tie two models togeter
       # specify the +belongs_to+ relationship.
       #
+      # Last argument can be an options hash:
+      #
+      #   class: provide a custom class name
+      #
       def belongs_to(*relations)
         options = relations.last.is_a?(Hash) ? relations.pop : {}
 
-        self.belongings ||= []
-        self.belongings += relations.map(&:to_s).sort
+        relations.each do |relation|
+          relation_model = options[:class] || relation.to_s.singularize.camelize
+
+          self.belongings[relation_model] = relation
+        end
 
         attr_accessor *relations
       end
-    end
-
-    def belongs_to?(model)
-      self.belongings.include? model.to_s.underscore
     end
   end
 end

@@ -7,6 +7,7 @@ module Entasis
       include ActiveModel::Validations
       class_attribute :attribute_names, :attributes_config, :belongings, instance_writer: false
 
+      self.belongings ||= {}
       self.attribute_names ||= []
       self.class_eval 'class UnknownAttributeError < StandardError; end'
     end

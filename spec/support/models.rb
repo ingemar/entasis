@@ -32,7 +32,7 @@ class Car
   class Destination
     include Entasis::Model
 
-    belongs_to :car
+    belongs_to :transportation, class: 'Car'
 
     attributes :name
   end
