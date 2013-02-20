@@ -1,5 +1,6 @@
 class Person
   include Entasis::Model
+  belongs_to :car
 
   attributes :name, :age, :city
 
@@ -21,6 +22,9 @@ end
 class Car
   include Entasis::Model
   include Entasis::TransposeKeys
+
+  has_many :people
+  has_many :passengers, class: :people
 
   attributes :name, :speed, :left_front_door, :right_front_door
 end

@@ -3,8 +3,9 @@ module Entasis
     extend ActiveSupport::Concern
 
     included do
+      include Entasis::Relations
       include ActiveModel::Validations
-      class_attribute :attribute_names, :attributes_config, instance_writer: false
+      class_attribute :attribute_names, :attributes_config, :belongings, instance_writer: false
 
       self.attribute_names ||= []
       self.class_eval 'class UnknownAttributeError < StandardError; end'
