@@ -13,7 +13,9 @@ module Entasis
     module ClassMethods
       ##
       #
-      # Takes a list of attribute names. Last argument can be an options hash.
+      # Takes a list of attribute names.
+      #
+      # Last argument can be an options hash:
       #
       #   ignore_undefined: true - Silently ignore any undefined attributes
       #
