@@ -5,12 +5,14 @@ describe Entasis::Relations do
     {
       name: 'Volvo',
       people: [{ name: 'Aslog' }],
-      passengers: [{ name: 'Gunnar' }]
+      passengers: [{ name: 'Gunnar' }],
+      destinations: [{ name: 'Stockholm' }]
     }
   end
   let(:car) { Car.new }
   let(:person) { car.people.first }
   let(:passenger) { car.passengers.first }
+  let(:destination) { car.destinations.first }
 
   describe '#attributes=' do
     before { car.attributes = attributes }
@@ -29,6 +31,14 @@ describe Entasis::Relations do
         expect(passenger).to be_a(Person)
         expect(passenger.name).to eq('Gunnar')
         expect(passenger.car).to eq(car)
+      end
+    end
+
+    context 'subclasses' do
+      it 'creates a new instance of the relation' do
+        expect(destination).to be_a(Car::Destination)
+        expect(destination.name).to eq('Stockholm')
+        expect(destination.car).to eq(car)
       end
     end
   end

@@ -25,7 +25,7 @@ module Entasis
         options = relations.last.is_a?(Hash) ? relations.pop : {}
 
         relations.each do |relation|
-          relation_model = (options[:class] || relation).to_s.singularize.camelize.constantize
+          relation_model = (options[:class] || relation).to_s.singularize.camelize
 
           self.class_eval <<-RUBY
             def #{relation}=(resources)
