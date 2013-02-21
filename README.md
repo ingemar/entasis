@@ -16,6 +16,8 @@ class Person
 
   attributes :name, :age, :city
 
+  validates :name, presence: true
+
   def age=(years)
     @age = years.to_i
   end
@@ -30,7 +32,8 @@ class Friend
 end
 
 
-hilda = Person.new(name: 'Hilda', age: '23', city: 'Stockholm', friends: [{ name: 'Emma' }, { name: 'Johan' }])
+attributes = { name: 'Hilda', age: '23', city: 'Stockholm', friends: [{ name: 'Emma' }, { name: 'Johan' }] }
+hilda = Person.new attributes
 
 hilda.attribute_names                  # => ["name", "age", "city"]
 hilda.attributes                       # => {"name"=>"Hilda", "age"=>23, "city"=>"Stockholm"}
