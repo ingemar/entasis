@@ -16,6 +16,6 @@ Gem::Specification.new do |s|
   s.files        = Dir.glob("lib/**/*") + %w(Gemfile entasis.gemspec HISTORY README.md LICENSE)
   s.test_files   = Dir.glob('spec/*')
 
-  s.add_runtime_dependency 'activemodel', '~> 3.0'
+  s.add_runtime_dependency 'activemodel', '~> 3.1'
   s.add_development_dependency 'rspec', '~> 2.0'
 end
