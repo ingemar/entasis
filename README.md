@@ -12,8 +12,6 @@ Example:
 class Person
   include Entasis::Model
 
-  has_many :friends
-
   attributes :name, :age, :city
 
   validates :name, presence: true
@@ -21,6 +19,36 @@ class Person
   def age=(years)
     @age = years.to_i
   end
+end
+
+person = Person.new name: 'Hilda', age: '23', city: 'Stockholm' }
+
+person.attribute_names # => ["name", "age", "city"]
+person.attributes      # => {"name"=>"Hilda", "age"=>23, "city"=>"Stockholm"}
+
+anon = Person.new
+anon.valid?           # => false
+anon.errors           # => {:name=>["can't be blank"]}>
+```
+
+Default behavior is to raise if any key in the hash given to `.new` or `#attributes=` is not defined,
+this can be circumvented by passing `ignore_undefined: true` as options when defining your attributes.
+
+
+Relations
+---------
+
+You can build simple relations between objects.
+
+Example:
+
+```ruby
+class Person
+  include Entasis::Model
+
+  has_many :friends
+
+  attributes :name
 end
 
 class Friend
@@ -32,22 +60,11 @@ class Friend
 end
 
 
-attributes = { name: 'Hilda', age: '23', city: 'Stockholm', friends: [{ name: 'Emma' }, { name: 'Johan' }] }
-hilda = Person.new attributes
+person = Person.new name: 'Anna', friends: [{ name: 'Emma' }, { name: 'Johan' }]
 
-hilda.attribute_names                  # => ["name", "age", "city"]
-hilda.attributes                       # => {"name"=>"Hilda", "age"=>23, "city"=>"Stockholm"}
-
-hilda.friends                          # => [#<Friend:0x0 @name="Emma">, #<Friend:0x1 @name="Johan">]
-hilda.friends[0].best_friend == hilda  # => true
-
-anon = Person.new
-anon.valid?           # => false
-anon.errors           # => {:name=>["can't be blank"]}>
+person.friends                           # => [#<Friend:0x0 @name="Emma">, #<Friend:0x1 @name="Johan">]
+person.friends[0].best_friend == person  # => true
 ```
-
-Default behavior is to raise if any key in the hash given to `.new` or `#attributes=` is not defined,
-this can be circumvented by passing `ignore_undefined: true` as options when defining your attributes.
 
 
 Transposing keys
