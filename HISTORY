@@ -1,3 +1,6 @@
+== 0.5.0
+Introduced relations between classes.
+
 == 0.4.0
 Introduced options for Entasis::Model.attributes and Entasis::TransposeKeys
 It's now possible to silently ignore unknown attributes by passing
