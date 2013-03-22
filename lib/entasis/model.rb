@@ -19,7 +19,7 @@ module Entasis
       #
       # Last argument can be an options hash:
       #
-      #   ignore_undefined: true - Silently ignore any undefined attributes
+      #   strict: true - Raise UnknownAttributeError when given an unknown attribute.
       #
       def attributes(*attrs)
         self.attributes_config = attrs.last.is_a?(Hash) ? attrs.pop : {}
@@ -49,7 +49,7 @@ module Entasis
         if attribute_names.include?(name.to_s) || self.respond_to?("#{name}=")
           self.send("#{name}=", value)
         else
-          if attributes_config[:ignore_undefined] != true
+          if attributes_config[:strict] == true
             raise self.class::UnknownAttributeError, "unknown attribute: #{name}"
           end
         end

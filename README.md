@@ -31,10 +31,6 @@ anon.valid?           # => false
 anon.errors           # => {:name=>["can't be blank"]}>
 ```
 
-Default behavior is to raise if any key in the hash given to `.new` or `#attributes=` is not defined,
-this can be circumvented by passing `ignore_undefined: true` as options when defining your attributes.
-
-
 Relations
 ---------
 
@@ -65,6 +61,13 @@ person = Person.new name: 'Anna', friends: [{ name: 'Emma' }, { name: 'Johan' }]
 person.friends                           # => [#<Friend:0x0 @name="Emma">, #<Friend:0x1 @name="Johan">]
 person.friends[0].best_friend == person  # => true
 ```
+
+
+Strict checking of attributes
+-----------------------------
+
+Default behavior is to ignore any key in the hash given to `.new` or `#attributes=` that's not in the list of attribute names.
+By setting passing the option `strict: true` to the attribute definition it will raise an UnknownAttributeError for that class everytime an unkown key is in the given hash.
 
 
 Transposing keys

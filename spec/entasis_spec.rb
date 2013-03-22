@@ -34,17 +34,21 @@ describe Entasis::Model do
       end
     end
 
-    it 'raises an error if attribute is unknown' do
-      expect {
-        Person.new(undefined: 'value')
-      }.to raise_error Person::UnknownAttributeError, 'unknown attribute: undefined'
-    end
+    context 'when given unknown attributes' do
+      subject { Person.new(undefined: 'value') }
 
-    context 'when .attributes option :allow_unknown is set to true' do
-      subject { RelaxedPerson.new(undefined: 'value') }
+      it 'ignore unknown attributes' do
+        expect(subject.attributes.keys).not_to include('undifined')
+      end
 
-      it 'ignores that attribute' do
-        expect(subject.attributes.keys).to_not include('undifined')
+      context 'when .attributes option :strict is set to true' do
+        subject { StrictPerson.new(undefined: 'value') }
+
+        it 'raises an error if attribute is unknown' do
+          expect {
+            StrictPerson.new(undefined: 'value')
+          }.to raise_error StrictPerson::UnknownAttributeError, 'unknown attribute: undefined'
+        end
       end
     end
   end

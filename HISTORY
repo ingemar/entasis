@@ -1,3 +1,8 @@
+== 1.0.0
+No longer raises error on unknown keys by default.
+Introduced option of strict checkeing instead.
+This contradict with previous versions of the gem.
+
 == 0.5.0
 Introduced relations between classes.
 

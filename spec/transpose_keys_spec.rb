@@ -17,10 +17,20 @@ describe Entasis::TransposeKeys do
       end
     end
 
-    it 'raises an error if attribute is unknown' do
-      expect {
-        Car.new(unDefined: 'value')
-      }.to raise_error Car::UnknownAttributeError, 'unknown attribute: un_defined (transposed from unDefined)'
+    context 'when given unknown attributes' do
+      subject { Car.new(undefined: 'value') }
+
+      it 'ignore unknown attributes' do
+        expect(subject.attributes.keys).not_to include('undifined')
+      end
+
+      context 'when .attributes option :strict is set to true' do
+        it 'raises an error if attribute is unknown' do
+          expect {
+            Car::Destination.new(unDefined: 'value')
+          }.to raise_error Car::Destination::UnknownAttributeError, 'unknown attribute: un_defined (transposed from unDefined)'
+        end
+      end
     end
   end
 end

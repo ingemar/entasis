@@ -15,8 +15,8 @@ class Child < Person
   attributes :candy
 end
 
-class RelaxedPerson < Person
-  attributes :baggypant, ignore_undefined: true
+class StrictPerson < Person
+  attributes :uptight, strict: true
 end
 
 class Car
@@ -31,9 +31,10 @@ class Car
 
   class Destination
     include Entasis::Model
+    include Entasis::TransposeKeys
 
     belongs_to :transportation, class: 'Car'
 
-    attributes :name
+    attributes :name, strict: true
   end
 end
