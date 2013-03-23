@@ -21,7 +21,7 @@ class Person
   end
 end
 
-person = Person.new name: 'Hilda', age: '23', city: 'Stockholm' }
+person = Person.new name: 'Hilda', age: '23', city: 'Stockholm'
 
 person.attribute_names # => ["name", "age", "city"]
 person.attributes      # => {"name"=>"Hilda", "age"=>23, "city"=>"Stockholm"}
