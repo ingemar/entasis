@@ -12,7 +12,6 @@ Gem::Specification.new do |s|
   s.email                 = 'ingemar@xox.se'
   s.homepage              = "http://github.com/ingemar/entasis"
   s.license               = 'MIT'
-  s.required_ruby_version = '>= 1.9.3'
   s.has_rdoc              = true
   s.files                 = Dir.glob("lib/**/*") + %w(Gemfile entasis.gemspec README.md HISTORY LICENSE)
   s.test_files            = Dir.glob('spec/*')
