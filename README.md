@@ -67,7 +67,7 @@ Strict checking of attributes
 -----------------------------
 
 Default behavior is to ignore any key in the hash given to `.new` or `#attributes=` that's not in the list of attribute names.
-By setting passing the option `strict: true` to the attribute definition it will raise an UnknownAttributeError for that class everytime an unkown key is in the given hash.
+By setting passing the option `strict: true` to the attribute definition it will raise an UnknownAttributeError for that class every time an unknown key is in the given hash.
 
 
 Transposing keys
