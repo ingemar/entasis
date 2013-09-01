@@ -79,6 +79,12 @@ keys in the given hash will be downcased and underscored before calling the sett
 This can be very useful when you got hash with camelcased keys, for example from an external service serving XML soup.
 
 
+Rails versions
+--------------
+Rails 4.x supported from 2.x and on.
+Use entasis 1.x for Rails 3.x.
+
+
 Contributors
 ------------
 
