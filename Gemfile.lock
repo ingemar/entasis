@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    entasis (1.0.1)
+    entasis (1.1.0)
       activemodel (~> 4.0)
 
 GEM
