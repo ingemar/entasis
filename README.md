@@ -85,6 +85,7 @@ Contributors
   - Ingemar Edsborn (ingemar)
   - Gabriel Reis (greis)
   - Jack Christensen (jackc)
+  -  Jaime Iniesta (aimeiniesta)
   - Johnny Winn (nurugger07)
   - Joshua Davey (jgdavey)
 
