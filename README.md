@@ -94,5 +94,3 @@ Contributors
   -  Jaime Iniesta (aimeiniesta)
   - Johnny Winn (nurugger07)
   - Joshua Davey (jgdavey)
-
-[![tracker](http://adserve.se/stat.gif?8a9a)](https://github.com/ingemar/entasis)
